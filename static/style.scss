@@ -7,6 +7,9 @@ body.full {
     -o-background-size: cover;
     background-size: cover;
 }
+body {
+    padding-bottom: 100px;
+}
 h1 {
     margin: 50px 0;
 }
@@ -16,10 +19,13 @@ input.search {
         background-color: $home-content;
     }
 }
-.recipe.row {
+div.recipe.row {
     background-color: $home-content;
     height: 100px;
     margin-top: 15px;
+    div.image {
+        overflow: hidden;
+    }
 }
 
 /* Add page */
