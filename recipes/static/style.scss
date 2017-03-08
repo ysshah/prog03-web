@@ -1,6 +1,6 @@
 $home-content: rgba(255,255,255,0.8);
 
-body {
+body.full {
     background: url(/static/images/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -8,16 +8,32 @@ body {
     background-size: cover;
 }
 h1 {
-    margin-top: 50px;
+    margin: 50px 0;
 }
 input.search {
     background-color: $home-content;
-    margin: 50px 0;
     &:focus {
         background-color: $home-content;
     }
 }
 .recipe.row {
     background-color: $home-content;
-    height: 50px;
+    height: 100px;
+    margin-top: 15px;
+}
+
+/* Add page */
+input.ingredient, input.direction {
+    display: inline-block;
+}
+li.add {
+    position: relative;
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+button.delete {
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }

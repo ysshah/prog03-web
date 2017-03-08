@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'index' %}" class="btn btn-primary">Home</a>
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Add new recipe</h1>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <form action="{% url 'add' %}" method="post">
+                <div class="form-group">
+                    <label for="name">Recipe Name</label>
+                    <input class="form-control" type="text" name="RecipeName" placeholder="Enter recipe name">
+                </div>
+                <div class="form-group">
+                    <label for="Ingredients[]">Ingredients</label>
+                    <button type="button" class="btn btn-primary btn-sm float-right add ingredient" tabindex="-1">+</button>
+                    <ul>
+                        <li class="add">
+                            <input class="form-control ingredient" type="text" name="Ingredients[]" placeholder="Enter ingredient">
+                            <button type="button" class="btn btn-danger btn-sm delete" tabindex="-1">&times;</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label for="Directions[]">Directions</label>
+                    <button type="button" class="btn btn-primary btn-sm float-right add direction" tabindex="-1">+</button>
+                    <ol>
+                        <li class="add">
+                            <input class="form-control direction" type="text" name="Directions[]" placeholder="Enter direction">
+                            <button type="button" class="btn btn-danger btn-sm delete" tabindex="-1">&times;</button>
+                        </li>
+                    </ol>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

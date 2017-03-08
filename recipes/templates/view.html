@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'index' %}" class="btn btn-primary">Home</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">{{recipe.RecipeName}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div>Ingredients</div>
+            <ul>
+            {% for ingredient in recipe.Ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+            </ul>
+            {% if recipe.Directions %}
+                <div>Directions</div>
+                <ol>
+                {% for direction in recipe.Directions %}
+                    <li>{{ direction }}</li>
+                {% endfor %}
+                </ol>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <form action="{% url 'view' recipe.RecipeName %}" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
