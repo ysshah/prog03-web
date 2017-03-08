@@ -1,5 +1,8 @@
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+recipes/static/style.css*
+__pycache__/
+static/
