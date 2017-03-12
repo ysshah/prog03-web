@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="container">
+    <div class="row navig">
+        <div class="col-12">
+            <a class="navig" href="{% url 'index' %}">
+                <img class="navig" src="{% static 'images/home.svg' %}">
+                <span class="navig-label hidden-sm-down">Home</span>
+            </a>
+            <a class="navig" href="{% url 'index' %}">
+                <img class="navig back" src="{% static 'images/back.svg' %}">
+                <span class="navig-label hidden-sm-down">Back</span>
+            </a>
+            <span class="navig">
+                <input class="form-control" type="text" name="search" placeholder="Search for recipes...">
+                <img class="search" src="{% static 'images/search.svg' %}">
+            </span>
+            <a class="navig text-right" href="{% url 'index' %}">
+                <span class="navig-label hidden-sm-down">Settings</span>
+                <img class="navig settings" src="{% static 'images/settings.svg' %}">
+            </a>
+        </div>
+    </div>
+</div>

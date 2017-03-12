@@ -5,3 +5,4 @@
 
 recipes/static/style.css*
 __pycache__/
+.DS_Store

@@ -7,11 +7,7 @@ def index(request):
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
     table = dynamodb.Table('Recipes')
     recipes = table.scan()['Items']
-    context = {
-        'recipes': recipes,
-        'body_class': 'full'
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', { 'recipes': recipes })
 
 
 def view(request, recipe_name):
@@ -28,7 +24,11 @@ def view(request, recipe_name):
         recipe['Ingredients'] = recipe['Ingredients'].split('\n')
         if 'Directions' in recipe:
             recipe['Directions'] = recipe['Directions'].split('\n')
-        return render(request, 'view.html', {'recipe': recipe})
+        context = {
+            'recipe': recipe,
+            'page_title': recipe['RecipeName'] + ' | '
+        }
+        return render(request, 'view.html', context)
     raise Http404("Recipe does not exist.")
 
 
@@ -50,4 +50,4 @@ def add(request):
                 recipe['Directions'] = '\n'.join(directions)
             table.put_item(Item=recipe)
             return redirect('view', recipe_name=recipe_name)
-    return render(request, 'add.html', {})
+    return render(request, 'add.html', {'page_title': 'Add New Recipe | '})

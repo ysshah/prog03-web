@@ -2,27 +2,45 @@
 {% load static %}
 {% block content %}
 
+<div class="container">
+    <div class="row navig">
+        <div class="col-6">
+            <a href="{% url 'add' %}">
+                <img class="add" src="{% static 'images/add.svg' %}">
+                <span class="add-label">Add New Recipe</span>
+            </a>
+        </div>
+        <div class="col-6 text-right">
+            <a href="{% url 'index' %}">
+                <span class="navig-label">Settings</span>
+                <img class="navig settings" src="{% static 'images/settings.svg' %}">
+            </a>
+        </div>
+    </div>
+</div>
+
 <h1 class="text-center">Recipe Assistant</h1>
 
-<div class="container">
+<div class="container search">
     <div class="row">
-        <div class="col-9">
-            <input class="form-control search" placeholder="Search for recipes" type="text" name="search">
-        </div>
-        <div class="col-3">
-            <a href="{% url 'add' %}" class="btn btn-primary">Add</a>
+        <div class="col-8 push-2">
+            <input class="form-control search" placeholder="Search for recipes..." type="text" name="search">
+            <img class="search home" src="{% static 'images/search.svg' %}">
         </div>
     </div>
 </div>
 <div class="container">
 {% for recipe in recipes %}
-    <div class="row recipe">
-        <div class="col-2 image">
-            <img class="img-fluid" src="{{ recipe.ImageURL }}">
+    <a href="{% url 'view' recipe.RecipeName %}" class="recipe">
+        <div class="image">
+            <img src="{{ recipe.ImageURL }}">
         </div>
-        <div class="col-6"><a href="{% url 'view' recipe.RecipeName %}">{{recipe.RecipeName}}</a></div>
-        <div class="col-4">Icons</div>
-    </div>
+        <span class="name">
+            <div>{{recipe.RecipeName}}</div>
+        </span>
+        <img class="icon float-right" src="{% static 'images/chef.svg' %}">
+        <img class="icon float-right" src="{% static 'images/list.svg' %}">
+    </a>
 {% endfor %}
 </div>
 
