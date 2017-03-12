@@ -31,16 +31,20 @@
 </div>
 <div class="container">
 {% for recipe in recipes %}
-    <a href="{% url 'view' recipe.RecipeName %}" class="recipe">
-        <div class="image">
+    <div class="recipe">
+        <a href="{% url 'view' recipe.RecipeName %}" class="image">
             <img src="{{ recipe.ImageURL }}">
-        </div>
-        <span class="name">
+        </a>
+        <a href="{% url 'view' recipe.RecipeName %}" class="name">
             <div>{{recipe.RecipeName}}</div>
-        </span>
-        <img class="icon float-right" src="{% static 'images/chef.svg' %}">
-        <img class="icon float-right" src="{% static 'images/list.svg' %}">
-    </a>
+        </a>
+        <a class="float-right" data-toggle="tooltip" title="View recipe directions" href="{% url 'view' recipe.RecipeName %}">
+            <img class="icon" src="{% static 'images/chef.svg' %}">
+        </a>
+        <a class="float-right" data-toggle="tooltip" title="View ingredients list" href="{% url 'ingredients' recipe.RecipeName %}">
+            <img class="icon" src="{% static 'images/list.svg' %}">
+        </a>
+    </div>
 {% endfor %}
 </div>
 

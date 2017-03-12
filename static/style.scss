@@ -14,7 +14,7 @@ body {
 h1 {
     margin: 30px 0;
 }
-button, input {
+button, input, .tooltip {
     font: inherit;
 }
 a {
@@ -24,6 +24,8 @@ a {
         text-decoration: none;
     }
 }
+
+/* Nav bar */
 div.row.navig {
     margin-top: 10px;
 }
@@ -49,14 +51,12 @@ span.navig {
 }
 img.navig {
     height: 40px;
-    &.back {
+    &.back, &.settings {
         position: relative;
         top: 2px;
-        left: 3px;
     }
-    &.settings {
-        position: relative;
-        top: 2px;
+    &.back {
+        left: 3px;
     }
 }
 div.nav-label {
@@ -88,20 +88,21 @@ img.search.home {
     right: 16px;
     top: 1px;
 }
-a.recipe {
-    height: 255px;
-    width: 1/3 * 100%;
+.recipe {
     display: inline-block;
+    height: 255px;
     margin-right: -4px;
-    vertical-align: top;
     padding: 10px;
+    vertical-align: top;
+    width: 1/3 * 100%;
     &:hover {
         border: 1px solid black;
         border-color: #5cb3fd;
         border-radius: 0.25rem;
         padding: 9px;
     }
-    div.image {
+    .image {
+        display: block;
         height: 200px;
         margin-bottom: 5px;
         overflow: hidden;
@@ -111,14 +112,14 @@ a.recipe {
             width: 100%;
         }
     }
-    img.icon {
-        width: 30px;
-    }
-    span.name {
+    .name {
         display: inline-block;
         line-height: 35px;
         width: 80%;
     }
+}
+img.icon {
+    width: 30px;
 }
 
 /* View page */
@@ -187,4 +188,10 @@ button.submit {
     &:hover {
         cursor: pointer;
     }
+}
+
+/* Ingredients list */
+.subtitle {
+    margin-bottom: 30px;
+    margin-top: -20px;
 }

@@ -32,6 +32,24 @@ def view(request, recipe_name):
     raise Http404("Recipe does not exist.")
 
 
+def ingredients(request, recipe_name):
+    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    table = dynamodb.Table('Recipes')
+    recipes = table.query(KeyConditionExpression=Key(
+        'RecipeName').eq(recipe_name))['Items']
+    if recipes:
+        recipe = recipes[0]
+        recipe['Ingredients'] = recipe['Ingredients'].split('\n')
+        if 'Directions' in recipe:
+            recipe['Directions'] = recipe['Directions'].split('\n')
+        context = {
+            'recipe': recipe,
+            'page_title': recipe['RecipeName'] + ' Ingredients | '
+        }
+        return render(request, 'ingredients.html', context)
+    raise Http404("Recipe does not exist.")
+
+
 def add(request):
     if request.method == 'POST':
         dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
