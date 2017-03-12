@@ -148,6 +148,9 @@ div.add.name {
         font-size: 30px;
     }
 }
+label.upload {
+    margin-bottom: 20px;
+}
 input.ingredient, textarea.direction {
     display: inline-block;
     padding-right: 35px;
@@ -191,6 +194,7 @@ div.delete {
 button.submit {
     background-color: white;
     border: 1px solid black;
+    margin-top: 30px;
     &:hover {
         cursor: pointer;
     }
