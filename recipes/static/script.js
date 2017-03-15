@@ -1,16 +1,5 @@
 $(document).ready(function() {
 
-    $('input.search').keyup(function() {
-        var query = $(this).val();
-        $('a.recipe').each(function(index) {
-            if ($(this).find('span.name div').text().toLowerCase().includes(query.toLowerCase())) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    });
-
     $('div.add-button').click(function() {
         if ($(this).hasClass('ingredient')) {
             var li = $('ul li').last().clone();

@@ -38,11 +38,41 @@ div.row.navig {
 a.navig {
     display: inline-block;
     margin-right: -4px;
+    position: relative;
     width: 14%;
-    &:hover {
-        img.settings {
-
-        }
+    &:hover:after {
+        background-color: black;
+        bottom: 0;
+        content: '';
+        height: 1px;
+        position: absolute;
+        width: 77px;
+    }
+    &.home:after, &.back:after {
+        left: 0;
+    }
+    &.settings:after {
+        right: 0;
+        width: 90px;
+    }
+}
+a.nav-home {
+    position: relative;
+    &:hover:after {
+        background-color: black;
+        content: '';
+        height: 1px;
+        position: absolute;
+    }
+    &.add:after {
+        bottom: -7px;
+        left: 0;
+        width: 156px;
+    }
+    &.settings:after {
+        bottom: -12px;
+        right: 0;
+        width: 88px;
     }
 }
 span.navig {
@@ -139,6 +169,15 @@ div.label {
 div.ingredients {
     columns: 2;
 }
+li.direction {
+    font-weight: bold;
+    span, textarea {
+        font-weight: normal;
+    }
+}
+form.delete {
+    margin: 0 auto;
+}
 
 /* Add page */
 div.add.name {
@@ -196,6 +235,8 @@ button.submit {
     border: 1px solid black;
     margin-top: 30px;
     &:hover {
+        background-color: rgba(0,0,0,0.3);
+        color: white;
         cursor: pointer;
     }
 }
@@ -204,4 +245,7 @@ button.submit {
 .subtitle {
     margin-bottom: 30px;
     margin-top: -20px;
+}
+li.ingredient-only {
+    font-size: 20px;
 }

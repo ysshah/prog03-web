@@ -5,13 +5,13 @@
 <div class="container">
     <div class="row navig">
         <div class="col-6">
-            <a href="{% url 'add' %}">
+            <a class="nav-home add" href="{% url 'add' %}">
                 <img class="add" src="{% static 'images/add.svg' %}">
                 <span class="add-label">Add New Recipe</span>
             </a>
         </div>
         <div class="col-6 text-right">
-            <a href="{% url 'index' %}">
+            <a class="nav-home settings" href="{% url 'index' %}">
                 <span class="navig-label">Settings</span>
                 <img class="navig settings" src="{% static 'images/settings.svg' %}">
             </a>

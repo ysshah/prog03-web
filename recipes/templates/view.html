@@ -28,19 +28,17 @@
         <div class="col-6">
             <ol>
             {% for direction in recipe.Directions %}
-                <li>{{ direction }}</li>
+                <li class="direction"><span>{{ direction }}</span></li>
             {% endfor %}
             </ol>
         </div>
     </div>
-    {% comment %}
     <div class="row">
-        <form action="{% url 'view' recipe.RecipeName %}" method="post">
-            <button type="submit" class="btn btn-danger">Delete</button>
+        <form class="delete" action="{% url 'view' recipe.RecipeName %}" method="post">
+            <button type="submit" class="btn submit">Delete Recipe</button>
             {% csrf_token %}
         </form>
     </div>
-    {% endcomment %}
 </div>
 
 {% endblock content %}
